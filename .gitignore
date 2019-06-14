@@ -13,8 +13,11 @@ Saved
 *.xcodeproj
 *.xcworkspace
 Content/WastelandRocks/
-*.umap
-*.uasset
 Content/GT_SELECT18/
 Build/
 Packaged/
+Content/textures/generic/grass1-albedo3.uasset
+Content/textures/generic/grass1-ao.uasset
+Content/textures/generic/grass1-height.uasset
+Content/textures/generic/grass1-normal1-dx.uasset
+Content/textures/generic/grass1-rough.uasset
