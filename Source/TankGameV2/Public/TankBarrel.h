@@ -18,7 +18,7 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category = BarrelCharacteristics)
-		float MaxBarrelAngleChangePerSecond = 3.0;
+		float MaxBarrelAngleChangePerSecond = 7;
 
 	UPROPERTY(EditAnywhere, Category = BarrelCharacteristics)
 		float MaxElevationAngle = 40.0;
