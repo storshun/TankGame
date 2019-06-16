@@ -31,7 +31,9 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 {
 	Turret = TurretToSet;
-	UE_LOG(LogTemp, Error, TEXT("Failed to find a barrel on %s"), *(GetOwner()->GetName()))
+	if (!Turret) {
+		UE_LOG(LogTemp, Error, TEXT("Failed to find a barrel on %s"), *(GetOwner()->GetName()))
+	}
 }
 
 // Called when the game starts
@@ -39,8 +41,9 @@ void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 
 void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
 {
-	if (!Barrel || !Turret)
+	if (!Barrel)
 	{
+		UE_LOG(LogTemp, Error, TEXT("Barrel not set"))
 		return;
 	}
 	FVector OutLaunchVelocity;
@@ -63,9 +66,9 @@ void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
 	if (bHaveAimSolution)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-		
-		MoveBarrel(AimDirection);
+
 		MoveTurret(AimDirection);
+		MoveBarrel(AimDirection);
 	}	
 	else
 	{
