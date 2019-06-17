@@ -26,13 +26,21 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 	if (!Barrel) {
 		UE_LOG(LogTemp, Error, TEXT("Failed to find a barrel on %s"), *(GetOwner()->GetName()))
 	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%s has a barrel set"), *(GetOwner()->GetName()))
+	}
 }
 
 void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 {
 	Turret = TurretToSet;
 	if (!Turret) {
-		UE_LOG(LogTemp, Error, TEXT("Failed to find a barrel on %s"), *(GetOwner()->GetName()))
+		UE_LOG(LogTemp, Error, TEXT("Failed to find a turret on %s"), *(GetOwner()->GetName()))
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%s has a turret set"), *(GetOwner()->GetName()))
 	}
 }
 
