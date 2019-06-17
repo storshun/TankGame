@@ -22,24 +22,26 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
-	Barrel = BarrelToSet;
-	if (!Barrel) {
+	if (!BarrelToSet) {
 		UE_LOG(LogTemp, Error, TEXT("Failed to find a barrel on %s"), *(GetOwner()->GetName()))
+			return;
 	}
 	else
 	{
+		Barrel = BarrelToSet;
 		UE_LOG(LogTemp, Warning, TEXT("%s has a barrel set"), *(GetOwner()->GetName()))
 	}
 }
 
 void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 {
-	Turret = TurretToSet;
-	if (!Turret) {
+	if (!TurretToSet) {
 		UE_LOG(LogTemp, Error, TEXT("Failed to find a turret on %s"), *(GetOwner()->GetName()))
+			return;
 	}
 	else
 	{
+		Turret = TurretToSet;
 		UE_LOG(LogTemp, Warning, TEXT("%s has a turret set"), *(GetOwner()->GetName()))
 	}
 }
@@ -49,9 +51,10 @@ void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 
 void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed)
 {
+
 	if (!Barrel)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Barrel not set"))
+		UE_LOG(LogTemp, Error, TEXT("Barrel not set on %s"), *(GetOwner()->GetName())) //No AI Controlled Tanks are getting past this. They are all nullptrs.
 		return;
 	}
 	FVector OutLaunchVelocity;
