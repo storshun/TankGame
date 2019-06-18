@@ -29,7 +29,7 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 	else
 	{
 		Barrel = BarrelToSet;
-		UE_LOG(LogTemp, Warning, TEXT("%s has a barrel set"), *(GetOwner()->GetName()))
+		//UE_LOG(LogTemp, Warning, TEXT("%s has a barrel set"), *(GetOwner()->GetName()))
 	}
 }
 
@@ -42,7 +42,7 @@ void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 	else
 	{
 		Turret = TurretToSet;
-		UE_LOG(LogTemp, Warning, TEXT("%s has a turret set"), *(GetOwner()->GetName()))
+		//UE_LOG(LogTemp, Warning, TEXT("%s has a turret set"), *(GetOwner()->GetName()))
 	}
 }
 

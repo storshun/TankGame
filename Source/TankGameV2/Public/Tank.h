@@ -29,8 +29,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 
 	void SetTurretReference(UTankTurret* TurretToSet);
+	
+	UFUNCTION(BlueprintCallable, Category = "Controls")
+
+	void FireCannon();
+
 
 	void AimAt(FVector OutHitLocation);
+
+
 
 	UPROPERTY(VisibleAnywhere, Category = "Firing")
 		FVector BarrelStartLocation;
