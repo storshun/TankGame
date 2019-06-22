@@ -34,7 +34,6 @@ void ATankPlayerController::Tick(float DeltaTime)
 	AimTowardsCrosshair();
 }
 
-
 ATank* ATankPlayerController::GetControlledTank() const 
 {
 	return Cast<ATank>(GetPawn());
@@ -55,7 +54,6 @@ void ATankPlayerController::AimTowardsCrosshair()
 			//UE_LOG(LogTemp, Warning, TEXT("Look Direction is %s"), *(OutHitLocation.ToString()))
 		}
 }
-
 
 //Get world location of line trace through cross hair
 bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
@@ -101,7 +99,6 @@ bool ATankPlayerController::GetLookDirection(FVector2D& ScreenLocation, FVector&
 		return false;
 	}
 }
-
 
 bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const
 {

@@ -35,17 +35,20 @@ public:
 
 	void FireCannon();
 
-
 	void AimAt(FVector OutHitLocation);
-
-
 
 	UPROPERTY(VisibleAnywhere, Category = "Firing")
 		FVector BarrelStartLocation;
 
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+		float ReloadTimeInSeconds = 2.25;
+
+	double LastFiretime = 0.0;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
 private:	
