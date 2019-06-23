@@ -3,8 +3,10 @@
 
 #include "Public/Tank.h"
 #include "Public/TankBarrel.h"
+#include "Public/TankTrack.h"
 #include "Engine/World.h"
 #include "Public/Projectile.h"
+#include "Components/PointLightComponent.h"
 
 // Sets default values
 ATank::ATank()
@@ -22,9 +24,35 @@ void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 	Barrel = BarrelToSet;
 }
 
+void ATank::SetTrackReference(UTankTrack* TrackToSet)
+{
+	if (TrackToSet)
+	{
+		Track = TrackToSet;
+	}
+	else
+	{
+		return;
+	}
+
+}
+
 void ATank::SetTurretReference(UTankTurret* TurretToSet)
 {
 	TankAimingComponent->SetTurretReference(TurretToSet);
+}
+
+void ATank::SetPointLightReference(UPointLightComponent* LightToSet)
+{
+	if (LightToSet)
+	{
+		PointLightSet = LightToSet;
+	}
+	else
+	{
+		return;
+	}
+
 }
 
 //Spawn the projectile at the socket location

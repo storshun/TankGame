@@ -29,11 +29,11 @@ private:
 
 	bool GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const;
 
-	UPROPERTY(EditAnywhere, Category = "Screen Meta Data")
+	UPROPERTY(EditDefaultsOnly, Category = "Screen Meta Data")
 		float CrossHairXLocation = 0.5f;
-	UPROPERTY(EditAnywhere, Category = "Screen Meta Data")
+	UPROPERTY(EditDefaultsOnly, Category = "Screen Meta Data")
 		float CrossHairYLocation = 0.5f;
-	UPROPERTY(EditAnywhere, Category = "Screen Meta Data")
+	UPROPERTY(EditDefaultsOnly, Category = "Screen Meta Data")
 		float LineTraceRange = 1000000.0f;
 
 };

@@ -11,7 +11,9 @@
 class AProjectile;
 class UTankBarrel; 
 class UTankTurret;
+class UTankTrack;
 class UTankAimingComponent; 
+class UPointLightComponent;
 
 //Manages the Tank pawn macro behavior
 UCLASS()
@@ -22,28 +24,39 @@ class TANKGAMEV2_API ATank : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ATank();
-	
+	//Needs a static mesh assigned in tank_bp
 	UFUNCTION(BlueprintCallable, Category="Setup")
-
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 
+	//Needs a static mesh assigned in tank_bp
 	UFUNCTION(BlueprintCallable, Category = "Setup")
+		void SetTrackReference(UTankTrack* TrackToSet);
 
+	//Needs a static mesh assigned in tank_bp
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void SetTurretReference(UTankTurret* TurretToSet);
 	
-	UFUNCTION(BlueprintCallable, Category = "Controls")
+	//Needs a static mesh assigned in tank_bp
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+		void SetPointLightReference(UPointLightComponent* LightToSet);
 
+
+	//
+	UFUNCTION(BlueprintCallable, Category = "Controls")
 	void FireCannon();
+
 
 	void AimAt(FVector OutHitLocation);
 
-	UPROPERTY(VisibleAnywhere, Category = "Firing")
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 		FVector BarrelStartLocation;
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 		float ReloadTimeInSeconds = 2.25;
 
 	double LastFiretime = 0.0;
+
+	UTankTrack* Track = nullptr;
 
 protected:
 	// Called when the game starts or when spawned
@@ -56,12 +69,13 @@ private:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UPROPERTY(EditAnywhere, Category = "Firing")
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float LaunchSpeed = 160000.0; //TODO - Find sensible default
 
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
 		TSubclassOf<AProjectile> ProjectileBlueprint; 
 
 	UTankBarrel* Barrel = nullptr;
 
+	UPointLightComponent* PointLightSet = nullptr;
 };
